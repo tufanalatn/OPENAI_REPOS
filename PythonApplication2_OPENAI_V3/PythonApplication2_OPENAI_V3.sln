@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonApplication2_OPENAI_V3", "PythonApplication2_OPENAI_V3\PythonApplication2_OPENAI_V3.pyproj", "{33980A86-D160-4372-B0D2-4A9B3F09DC75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33980A86-D160-4372-B0D2-4A9B3F09DC75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33980A86-D160-4372-B0D2-4A9B3F09DC75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {946A6499-06D6-4A66-90F1-BEE23BC3786F}
+	EndGlobalSection
+EndGlobal

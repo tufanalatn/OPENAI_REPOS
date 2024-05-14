@@ -1,0 +1,36 @@
+﻿@page
+@model Webstore.Pages.clientsModel
+@{
+}
+</br>
+<h2>List Of Clients</h2>
+<a class='btn btn-primary btn-sm' href='/Client/Create'>New Client</a>
+<table class="table">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Adress</th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var client in Model.listClients)
+    {
+        <tr>
+            <td>@client.id</td>
+            <td>@client.name</td>
+            <td>@client.email</td>
+            <td>@client.phone</td>
+            <td>@client.address</td>
+            <td>
+                <a class='btn btn-primary btn-sm' href="/Client/Edit?id=@client.id">Edit</a>
+                <a class='btn btn-primary btn-sm' href="/Client/Delete?id=@client.id">Delete</a>
+            </td>
+        </tr>
+    }
+</tbody>
+ </table>
+
