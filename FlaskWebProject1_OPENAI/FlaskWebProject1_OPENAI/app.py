@@ -40,13 +40,13 @@ def ask():
 
         from openai import OpenAI
         client = OpenAI()
-
+        combined_prompt = "Compose a story that is about " + combined_prompt
         completion = client.chat.completions.create(
          model="gpt-4o",
         messages=[
             {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
           #  {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
-            {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
+            {"role": "user", "content": combined_prompt}
             ]
         )
         
