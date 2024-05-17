@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonApplication2_FLASK_v2", "PythonApplication2_FLASK_v2\PythonApplication2_FLASK_v2.pyproj", "{BCDA94EE-1C2D-415C-A80C-859FBB7ADD3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCDA94EE-1C2D-415C-A80C-859FBB7ADD3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCDA94EE-1C2D-415C-A80C-859FBB7ADD3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCFB4FB7-080D-43F8-9D12-8B4647D3C538}
+	EndGlobalSection
+EndGlobal

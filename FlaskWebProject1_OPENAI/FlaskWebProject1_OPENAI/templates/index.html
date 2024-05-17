@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask OpenAI Örneği</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        #response, #error {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        #error {
+            color: red;
+            background-color: #ffe6e6;
+        }
+    </style>
+    <script>
+        async function submitForm(event) {
+            event.preventDefault();
+            console.log("Form submitted");
+
+            const imageUrl = document.getElementById('image_url').value;
+            const text = document.getElementById('text').value;
+            const prompt = document.getElementById('prompt').value;
+            let isValid = true;
+            let errorMessage = "";
+
+            if (!imageUrl) {
+                isValid = false;
+                errorMessage += "Görsel URL alanı doldurulmalıdır. ";
+            }
+
+            if (!text) {
+                isValid = false;
+                errorMessage += "Metin alanı doldurulmalıdır. ";
+            }
+
+            if (!prompt) {
+                isValid = false;
+                errorMessage += "İstek alanı doldurulmalıdır. ";
+            }
+
+            if (!isValid) {
+                document.getElementById('error').innerHTML = errorMessage;
+                document.getElementById('response').innerHTML = '';
+                return;
+            }
+
+            console.log("Image URL:", imageUrl);
+            console.log("Text:", text);
+            console.log("Prompt:", prompt);
+
+            try {
+                console.log("Sending request");
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        image_url: imageUrl,
+                        text: text,
+                        prompt: prompt,
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                console.log("Received response");
+                const result = await response.json();
+
+                if (result.error) {
+                    document.getElementById('error').innerHTML = result.error;
+                    document.getElementById('response').innerHTML = '';
+                } else {
+                    document.getElementById('response').innerHTML = result.response;
+                    document.getElementById('error').innerHTML = '';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('error').innerHTML = 'Hata oluştu. Detaylar için konsolu kontrol edin.';
+                document.getElementById('response').innerHTML = '';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Flask OpenAI Örneği</h1>
+    <form onsubmit="submitForm(event)" novalidate>
+        <label for="image_url">Görsel URL:</label>
+        <input type="text" id="image_url" name="image_url"><br><br>
+        <label for="text">Metin:</label>
+        <input type="text" id="text" name="text"><br><br>
+        <label for="prompt">İstek:</label>
+        <input type="text" id="prompt" name="prompt"><br><br>
+        <button type="submit">Gönder</button>
+    </form>
+    <h2>Yanıt:</h2>
+    <div id="response"></div>
+    <div id="error"></div>
+</body>
+</html>
+
+
+
