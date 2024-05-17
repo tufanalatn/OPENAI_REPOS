@@ -1,0 +1,24 @@
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environment directories
+env/
+venv/
+
+# Ignore environment variable files
+.env
+
+# Ignore any other configuration files that might contain secrets
+config/settings.py
+config/secret_config.py
+
+# Ignore IDE-specific files and directories
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
