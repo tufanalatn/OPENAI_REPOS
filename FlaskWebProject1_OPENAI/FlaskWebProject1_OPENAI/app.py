@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory,  render_template
 import sys
+from pathlib import Path
 
 from flask_cors import CORS
 
@@ -57,12 +58,25 @@ def ask():
         # Extract the message content from the response
         print (completion.choices)
         message_content = completion.choices[0].message.content.replace('\n', '<br>')
+        
+        speech_file_path = Path(__file__).parent / "speech.mp3"
+        response_audio = client.audio.speech.create(
+        model="tts-1",
+        voice="alloy",
+        input=message_content
+)
+
+        response_audio.stream_to_file(speech_file_path)
+        print(speech_file_path)
 
         return jsonify({"response": message_content})
     
     except Exception as e:
         print("Error:", e)
         return jsonify({"error": str(e)}), 500
+
+
+
 
 
 if __name__ == '__main__':
