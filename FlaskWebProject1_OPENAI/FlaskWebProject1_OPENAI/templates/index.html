@@ -102,23 +102,23 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="my-4">Flask OpenAI Örneği</h1>
+        <h1 class="my-4">Flask OpenAI Hikaye Yaratıcısı </h1>
         <form onsubmit="submitForm(event)" novalidate>
             <div class="form-group">
-                <label for="image_url">Görsel URL:</label>
+                <label for="image_url">Yer:</label>
                 <input type="text" class="form-control" id="image_url" name="image_url">
             </div>
             <div class="form-group">
-                <label for="text">Metin:</label>
+                <label for="text">Kişi:</label>
                 <input type="text" class="form-control" id="text" name="text">
             </div>
             <div class="form-group">
-                <label for="prompt">İstek:</label>
+                <label for="prompt">Konu:</label>
                 <input type="text" class="form-control" id="prompt" name="prompt">
             </div>
             <button type="submit" class="btn btn-primary">Gönder</button>
         </form>
-        <h2 class="my-4">Yanıt:</h2>
+        <h2 class="my-4">Hikaye:</h2>
         <div id="response"></div>
         <div id="error"></div>
     </div>
