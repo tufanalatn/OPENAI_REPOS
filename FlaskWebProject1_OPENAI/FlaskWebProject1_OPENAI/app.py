@@ -73,8 +73,10 @@ def ask():
         voice="alloy",
         input=message_content
 )
-
-        response_audio.stream_to_file(speech_file_path)
+        with open(speech_file_path, 'wb') as f:
+            for chunk in response_audio.iter_bytes():
+                f.write(chunk)
+       # response_audio.stream_to_file(speech_file_path)
         print(speech_file_path)
 
         return jsonify({"response": message_content})
