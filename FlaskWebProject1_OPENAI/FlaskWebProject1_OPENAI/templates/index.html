@@ -1,3 +1,4 @@
+<
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -26,6 +27,11 @@
         #error {
             color: red;
             background-color: #ffe6e6;
+        }
+
+        #audio-player {
+            margin-top: 20px;
+            display: none;
         }
     </style>
     <script>
@@ -88,21 +94,25 @@
                 if (result.error) {
                     document.getElementById('error').innerHTML = result.error;
                     document.getElementById('response').innerHTML = '';
+                    document.getElementById('audio-player').style.display = 'none';
                 } else {
                     document.getElementById('response').innerHTML = result.response;
                     document.getElementById('error').innerHTML = '';
+                    document.getElementById('audio-player').style.display = 'block';
+                    document.getElementById('audio-player').src = '/audio';
                 }
             } catch (error) {
                 console.error('Error:', error);
                 document.getElementById('error').innerHTML = 'Hata oluştu. Detaylar için konsolu kontrol edin.';
                 document.getElementById('response').innerHTML = '';
+                document.getElementById('audio-player').style.display = 'none';
             }
         }
     </script>
 </head>
 <body>
     <div class="container">
-        <h1 class="my-4">Flask OpenAI Hikaye Yaratıcısı </h1>
+        <h1 class="my-4"> Hikaye Yaratıcısı </h1>
         <form onsubmit="submitForm(event)" novalidate>
             <div class="form-group">
                 <label for="image_url">Yer:</label>
@@ -121,9 +131,11 @@
         <h2 class="my-4">Hikaye:</h2>
         <div id="response"></div>
         <div id="error"></div>
+        <audio id="audio-player" controls>
+            <source src="" type="audio/mpeg">
+            Tarayıcınız ses öğesini desteklemiyor.
+        </audio>
     </div>
 </body>
 </html>
-
-
 

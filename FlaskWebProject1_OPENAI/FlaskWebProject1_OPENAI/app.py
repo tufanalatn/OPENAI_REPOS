@@ -83,6 +83,9 @@ def ask():
         print("Error:", e)
         return jsonify({"error": str(e)}), 500
 
+@app.route('/audio')
+def audio():
+    return send_from_directory(directory=Path(__file__).parent, path='speech.mp3')
 
 
 
