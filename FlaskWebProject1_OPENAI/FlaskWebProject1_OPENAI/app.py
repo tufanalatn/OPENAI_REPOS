@@ -14,6 +14,7 @@ except ImportError:
 app = Flask(__name__)
 CORS(app)
 
+MAX_INPUT_LENGTH = 4096  # Define maximum input length
 
 @app.route('/')
 def home():
@@ -35,20 +36,22 @@ def ask():
 
 
         # Combine the inputs into a single prompt for the ChatGPT model
-        combined_prompt = f"Image URL: {image_url}\nText: {text}\nPrompt: {prompt}"
+        combined_prompt = f"{image_url} {text} {prompt}"
         print("Combined prompt:", combined_prompt)  # Debugging statement
 
 
         from openai import OpenAI
         client = OpenAI()
         combined_prompt = "Compose a 600 word of story in English that is about " + combined_prompt
+        print(len(combined_prompt))
         completion = client.chat.completions.create(
          model="gpt-4o",
         messages=[
             {"role": "system", "content": "You are a writer  assistant, skilled in creating fiction stories."},
           #  {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
             {"role": "user", "content": combined_prompt}
-            ]
+            ],
+         max_tokens=1500  # Set the maximum number of tokens in the response   
         )
         
      
@@ -58,6 +61,11 @@ def ask():
         # Extract the message content from the response
         print (completion.choices)
         message_content = completion.choices[0].message.content.replace('\n', '<br>')
+        print(len(message_content))
+        if len(message_content) > MAX_INPUT_LENGTH:
+            message_content = message_content[:MAX_INPUT_LENGTH] 
+        print(len(message_content))
+
         
         speech_file_path = Path(__file__).parent / "speech.mp3"
         response_audio = client.audio.speech.create(
