@@ -18,6 +18,7 @@
     <Name>FlaskWebProject1_OPENAI</Name>
     <RootNamespace>FlaskWebProject1_OPENAI</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
