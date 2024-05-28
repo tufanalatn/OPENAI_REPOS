@@ -42,6 +42,7 @@
             const imageUrl = document.getElementById('image_url').value;
             const text = document.getElementById('text').value;
             const prompt = document.getElementById('prompt').value;
+            const language = document.getElementById('language').value;
             let isValid = true;
             let errorMessage = "";
 
@@ -59,6 +60,10 @@
                 isValid = false;
                 errorMessage += "İstek alanı doldurulmalıdır. ";
             }
+            if (!language) {
+                isValid = false;
+                errorMessage += "Çevrilmesini istediğiniz dil seçilmelidir ";
+            }
 
             if (!isValid) {
                 document.getElementById('error').innerHTML = errorMessage;
@@ -69,6 +74,7 @@
             console.log("Image URL:", imageUrl);
             console.log("Text:", text);
             console.log("Prompt:", prompt);
+            console.log("Language", language);
 
             try {
                 console.log("Sending request");
@@ -81,6 +87,7 @@
                         image_url: imageUrl,
                         text: text,
                         prompt: prompt,
+                        language:language,
                     }),
                 });
 
@@ -126,8 +133,23 @@
                 <label for="prompt">Konu:</label>
                 <input type="text" class="form-control" id="prompt" name="prompt">
             </div>
-            <button type="submit" class="btn btn-primary">Gönder</button>
-        </form>
+            <div class="form-group">
+                <label for="language">Language:</label>
+                <select class="form-control" id="language" name="language" required>
+                    <option value="">Select a language</option>
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Turkish">Turkish</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Dutch">Dutch</option>
+                    <option value="Russian">Russian</option>
+                    <option value="Japenese">Japan</option>
+                    <option value="Italian">Italian</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Gönder</button>
+</form>
         <h2 class="my-4">Hikaye:</h2>
         <div id="response"></div>
         <div id="error"></div>

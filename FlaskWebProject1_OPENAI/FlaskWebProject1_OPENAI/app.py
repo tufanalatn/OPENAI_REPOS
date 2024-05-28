@@ -30,19 +30,22 @@ def ask():
         image_url = data.get('image_url')
         text = data.get('text')
         prompt = data.get('prompt')
-        language="Spanish"
+        language = data.get('language')
+        print(language)
+
         if not all([image_url, text, prompt]):
             return jsonify({"error": "All fields (image_url, text, prompt) are required."}), 400
 
 
         # Combine the inputs into a single prompt for the ChatGPT model
         combined_prompt = f"{image_url} {text} {prompt}"
+        combined_prompt = f"Compose a 600 word story in {language} that is about " + combined_prompt
         print("Combined prompt:", combined_prompt)  # Debugging statement
 
 
         from openai import OpenAI
         client = OpenAI()
-        combined_prompt = "Compose a 600 word of story in " +  language + " that is about " + combined_prompt
+        
         print(len(combined_prompt))
         completion = client.chat.completions.create(
          model="gpt-4o",
