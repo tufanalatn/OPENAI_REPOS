@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /FlaskWebProject1_OPENAI_V3/FlaskWebProject1_OPENAI_V3/env/Lib/site-packages/tensorflow/include
+/FlaskWebProject1_OPENAI/FlaskWebProject1_OPENAI/speech.mp3
