@@ -30,7 +30,7 @@ def ask():
         image_url = data.get('image_url')
         text = data.get('text')
         prompt = data.get('prompt')
-
+        language="Spanish"
         if not all([image_url, text, prompt]):
             return jsonify({"error": "All fields (image_url, text, prompt) are required."}), 400
 
@@ -42,7 +42,7 @@ def ask():
 
         from openai import OpenAI
         client = OpenAI()
-        combined_prompt = "Compose a 600 word of story in English that is about " + combined_prompt
+        combined_prompt = "Compose a 600 word of story in " +  language + " that is about " + combined_prompt
         print(len(combined_prompt))
         completion = client.chat.completions.create(
          model="gpt-4o",
