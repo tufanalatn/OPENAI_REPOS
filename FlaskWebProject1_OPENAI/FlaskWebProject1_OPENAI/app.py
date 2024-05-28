@@ -48,7 +48,7 @@ def ask():
         
         print(len(combined_prompt))
         completion = client.chat.completions.create(
-         model="gpt-4o",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": "You are a writer  assistant, skilled in creating fiction stories."},
           #  {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
