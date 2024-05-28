@@ -39,7 +39,7 @@ def ask():
 
         # Combine the inputs into a single prompt for the ChatGPT model
         combined_prompt = f"{image_url} {text} {prompt}"
-        combined_prompt = f"Compose a 600 word story in {language} that is about " + combined_prompt
+        combined_prompt = f"Compose a 600 word story for kids with facts in {language} that is about " + combined_prompt
         print("Combined prompt:", combined_prompt)  # Debugging statement
 
 
@@ -68,7 +68,7 @@ def ask():
         if len(message_content) > MAX_INPUT_LENGTH:
             message_content = message_content[:MAX_INPUT_LENGTH] 
         print(len(message_content))
-
+         
         
         speech_file_path = Path(__file__).parent / "speech.mp3"
         response_audio = client.audio.speech.create(
